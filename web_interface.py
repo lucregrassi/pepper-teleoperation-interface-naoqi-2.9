@@ -5,6 +5,7 @@ import pandas as pd
 # Create a UDP socket to communicate with the robot
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
+
 # Function to load the predefined sentences from a text file
 def load_sentences(file_path):
     try:
