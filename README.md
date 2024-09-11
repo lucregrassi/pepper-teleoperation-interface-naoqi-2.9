@@ -42,7 +42,7 @@ This project provides a simple web-based interface for controlling the Pepper ro
 1. Run the streamlit application
 
     ```bash
-     streamlit run teleoperation_interface.py
+     streamlit run main.py
      ```
 2.	Open your browser and navigate to http://localhost:8501 to access the interface. If you’re using another device on the same network, replace localhost with your computer’s IP address (e.g., http://your-computer-ip:8501).
 3.	Ensure that the [PepperTeleoperation](https://github.com/lucregrassi/PepperTeleoperation) application is running on the robot and that both the robot and your computer are connected to the same network.
