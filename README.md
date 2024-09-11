@@ -26,8 +26,8 @@ This project provides a simple web-based interface for controlling the Pepper ro
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/lucregrassi/pepper_naoqi2.9_teleoperation
-   cd pepper_naoqi2.9_teleoperation
+   git clone https://github.com/lucregrassi/pepper-teleoperation-interface-naoqi-2.9
+   cd pepper-teleoperation-interface-naoqi-2.9
    ```
    
 2. Install the required dependencies:
