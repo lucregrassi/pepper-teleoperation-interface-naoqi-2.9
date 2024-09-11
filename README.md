@@ -1,4 +1,4 @@
-# Teleoperation Controller for Pepper (Naoqi 2.9)
+# Teleoperation Interface for Pepper robot (Naoqi 2.9)
 
 This project provides a simple web-based interface for controlling the Pepper robot. It is built using [Streamlit](https://streamlit.io/) and enables users to send movement commands, adjust volume, and make the robot speak predefined or custom sentences. The application communicates with the robot over a UDP connection.
 
