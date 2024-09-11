@@ -7,23 +7,25 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 
 # Function to load the predefined sentences from a text file
-def load_sentences(file_path):
+def load_sentences(path_file):
     try:
-        with open(file_path, 'r', encoding='utf-8') as file:
+        with open(path_file, 'r', encoding='utf-8') as file:
             sentences = file.read().splitlines()  # Load each line as a sentence
         return sentences
     except Exception as e:
         st.error(f"Error loading sentences: {e}")
         return []
 
+
 # Function to save the sentences to a text file
-def save_sentences(sentences, file_path):
+def save_sentences(sentences, path_file):
     try:
-        with open(file_path, 'w', encoding='utf-8') as file:
-            for sentence in sentences:
-                file.write(f"{sentence}\n")  # Save each sentence on a new line
+        with open(path_file, 'w', encoding='utf-8') as file:
+            for sent in sentences:
+                file.write(f"{sent}\n")  # Save each sentence on a new line
     except Exception as e:
         st.error(f"Error saving sentences: {e}")
+
 
 # Function to send a command (sentence) to the robot
 def send_command(command, robot_ip):
@@ -31,6 +33,7 @@ def send_command(command, robot_ip):
         sock.sendto(command.encode(), (robot_ip, 54321))  # Use the dynamic IP address
     except Exception as e:
         st.error(f"Error sending the command to {robot_ip}: {e}")
+
 
 # Load sentences from the "sentences.txt" file
 file_path = "sentences.txt"
@@ -50,9 +53,11 @@ if 'modified_sentence' not in st.session_state:
 if 'robot_ip' not in st.session_state:
     st.session_state['robot_ip'] = "192.168.1.14"  # Set a default value
 
+
 # Function to refresh and reload sentences in session state
 def refresh_sentences():
     st.session_state.sentences = load_sentences(file_path)
+
 
 # Streamlit user interface (UI)
 st.title("Pepper teleoperation")
