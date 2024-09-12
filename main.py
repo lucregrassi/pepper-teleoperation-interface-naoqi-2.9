@@ -27,7 +27,7 @@ def save_sentences(sentences, path_file):
         st.error(f"Error saving sentences: {e}")
 
 
-# Function to send a command (sentence) to the robot
+# Function to send a command (sentence or action) to the robot
 def send_command(command, robot_ip):
     try:
         sock.sendto(command.encode(), (robot_ip, 54321))  # Use the dynamic IP address
@@ -60,7 +60,7 @@ def refresh_sentences():
 
 
 # Streamlit user interface (UI)
-st.title("Pepper teleoperation")
+st.title("Pepper Teleoperation")
 
 # --- Section to set the robot's IP address ---
 st.subheader("Set robot IP address")
@@ -92,15 +92,15 @@ with col5:
         send_command('ROTATE_RIGHT', st.session_state.robot_ip)
 
 # --- Section to control Pepper's volume ---
-st.subheader("Volume control")
+st.subheader("Volume Control")
 volume_col1, volume_col2 = st.columns([1, 1])
 
 with volume_col1:
-    if st.button("🔊 Volume Up"):
+    if st.button("🔊 Volume up"):
         send_command("VOLUME_UP", st.session_state.robot_ip)
 
 with volume_col2:
-    if st.button("🔉 Volume Down"):
+    if st.button("🔉 Volume down"):
         send_command("VOLUME_DOWN", st.session_state.robot_ip)
 
 # --- Section to send a sentence ---
@@ -131,12 +131,12 @@ if submit_sentence:
         send_command(sentence, st.session_state.robot_ip)
 
 # Display the table of predefined sentences and their corresponding numbers
-st.subheader("Predefined sentences list")
+st.subheader("Predefined Sentences List")
 df = pd.DataFrame({"Number": list(range(len(st.session_state.sentences))), "Sentence": st.session_state.sentences})
 st.dataframe(df)
 
 # --- Section to add a new sentence ---
-st.subheader("Add a new sentence")
+st.subheader("Add a New Sentence")
 st.session_state.new_sentence = st.text_input("Enter a new sentence", value=st.session_state.new_sentence)
 
 if st.button("Add"):
@@ -149,7 +149,7 @@ if st.button("Add"):
         st.rerun()
 
 # --- Section to modify an existing sentence ---
-st.subheader("Modify a sentence")
+st.subheader("Modify a Sentence")
 sentence_to_modify = st.number_input("Enter the number of the sentence to modify", min_value=0,
                                      max_value=len(st.session_state.sentences) - 1, step=1)
 st.session_state.modified_sentence = st.text_input("Modify the selected sentence",
@@ -164,7 +164,7 @@ if st.button("Save"):
     st.rerun()
 
 # --- Section to delete an existing sentence ---
-st.subheader("Delete a sentence")
+st.subheader("Delete a Sentence")
 sentence_to_delete = st.number_input("Enter the number of the sentence to delete", min_value=0,
                                      max_value=len(st.session_state.sentences) - 1, step=1)
 if st.button("Delete"):
@@ -173,3 +173,18 @@ if st.button("Delete"):
         save_sentences(st.session_state.sentences, file_path)
         st.success("Sentence deleted successfully!")
         st.rerun()
+
+# --- Section to control Pepper's animations ---
+st.subheader("Perform action")
+
+# Create a dropdown menu for action selection
+actions = ["Hug", "Greet"]
+selected_action = st.selectbox("Choose an action", actions)
+
+if st.button("Send"):
+    if selected_action == "Hug":
+        send_command("HUG", st.session_state.robot_ip)
+        st.success("Hug command sent!")
+    elif selected_action == "Greet":
+        send_command("GREET", st.session_state.robot_ip)
+        st.success("Greet command sent!")
