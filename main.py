@@ -51,7 +51,7 @@ if 'modified_sentence' not in st.session_state:
 
 # Initialize session state for robot IP if not already set
 if 'robot_ip' not in st.session_state:
-    st.session_state['robot_ip'] = "Insert robot IP"  # Set a default value
+    st.session_state['robot_ip'] = ""  # Set a default value
 
 
 # Function to refresh and reload sentences in session state
