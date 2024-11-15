@@ -2,6 +2,9 @@ import streamlit as st
 import socket
 import pandas as pd
 
+# Load sentences from the "sentences.txt" file
+file_path = "tempo_della_salute.txt"
+
 # Create a UDP socket to communicate with the robot
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
@@ -33,10 +36,6 @@ def send_command(command, robot_ip):
         sock.sendto(command.encode(), (robot_ip, 54321))  # Use the dynamic IP address
     except Exception as e:
         st.error(f"Error sending the command to {robot_ip}: {e}")
-
-
-# Load sentences from the "sentences.txt" file
-file_path = "sentences.txt"
 
 # Initialize session state for sentences if not already set
 if 'sentences' not in st.session_state:
