@@ -19,8 +19,7 @@ This project provides a simple web-based interface for controlling a robot. It i
 - Python 3.7+
 - Streamlit
 - Pandas
-- [PepperTeleoperation](https://github.com/lucregrassi/PepperTeleoperation) application installed and running on the Pepper robot.
-- A socket server on any other robot.
+- [PepperTeleoperation](https://github.com/lucregrassi/PepperTeleoperation) application installed and running on the Pepper robot or a socket server on any other robot.
 
 ## Installation
 
