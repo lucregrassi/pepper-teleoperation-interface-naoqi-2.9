@@ -37,6 +37,7 @@ def send_command(command, robot_ip):
     except Exception as e:
         st.error(f"Error sending the command to {robot_ip}: {e}")
 
+
 # Initialize session state for sentences if not already set
 if 'sentences' not in st.session_state:
     st.session_state.sentences = load_sentences(file_path)
@@ -59,13 +60,13 @@ def refresh_sentences():
 
 
 # Streamlit user interface (UI)
-st.title("Pepper Teleoperation")
+st.title("Robot Teleoperation")
 
 # --- Section to set the robot's IP address ---
 st.subheader("Set robot IP address")
 st.session_state.robot_ip = st.text_input("Enter the robot's IP address", value=st.session_state.robot_ip)
 
-# --- Section to control Pepper's movement ---
+# --- Section to control the robot's movement ---
 st.subheader("Movement control")
 # Set up buttons in a single row to control movement
 col1, col2, col3, col4, col5 = st.columns([1, 1, 1, 1, 1])
@@ -90,7 +91,7 @@ with col5:
     if st.button("➡️"):
         send_command('ROTATE_RIGHT', st.session_state.robot_ip)
 
-# --- Section to control Pepper's volume ---
+# --- Section to control robot's volume ---
 st.subheader("Volume Control")
 volume_col1, volume_col2 = st.columns([1, 1])
 
@@ -173,7 +174,7 @@ if st.button("Delete"):
         st.success("Sentence deleted successfully!")
         st.rerun()
 
-# --- Section to control Pepper's animations ---
+# --- Section to control robot's animations ---
 st.subheader("Perform action")
 
 # Create a dropdown menu for action selection

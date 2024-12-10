@@ -1,8 +1,8 @@
-# Teleoperation Interface for Pepper robot (Naoqi 2.9)
+# Teleoperation Interface for robots
 
-This project provides a simple web-based interface for controlling the Pepper robot. It is built using [Streamlit](https://streamlit.io/) and enables users to send movement commands, adjust volume, and make the robot speak predefined or custom sentences. The application communicates with the robot over a UDP connection.
+This project provides a simple web-based interface for controlling a robot. It is built using [Streamlit](https://streamlit.io/) and enables users to send movement commands, adjust volume, and make the robot speak predefined or custom sentences. The application communicates with the robot over a UDP connection.
 
-**Note:** To use this interface, the `PepperTeleoperation` application must be installed and running on the robot. You can find it here: [PepperTeleoperation](https://github.com/lucregrassi/PepperTeleoperation).
+**Note:** To use this interface on the Pepper robot, the `PepperTeleoperation` application must be installed and running on the robot. You can find it here: [PepperTeleoperation](https://github.com/lucregrassi/PepperTeleoperation).
 
 ## Features
 
@@ -20,14 +20,15 @@ This project provides a simple web-based interface for controlling the Pepper ro
 - Streamlit
 - Pandas
 - [PepperTeleoperation](https://github.com/lucregrassi/PepperTeleoperation) application installed and running on the Pepper robot.
+- A socket server on any other robot.
 
 ## Installation
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/lucregrassi/pepper-teleoperation-interface-naoqi-2.9
-   cd pepper-teleoperation-interface-naoqi-2.9
+   git clone https://github.com/lucregrassi/robot-teleoperation-interface
+   cd robot-teleoperation-interface
    ```
    
 2. Install the required dependencies:
@@ -45,32 +46,32 @@ This project provides a simple web-based interface for controlling the Pepper ro
      streamlit run main.py
      ```
 2.	Open your browser and navigate to http://localhost:8501 to access the interface. If you’re using another device on the same network, replace localhost with your computer’s IP address (e.g., http://your-computer-ip:8501).
-3.	Ensure that the [PepperTeleoperation](https://github.com/lucregrassi/PepperTeleoperation) application is running on the robot and that both the robot and your computer are connected to the same network.
+3.	Ensure that the [PepperTeleoperation](https://github.com/lucregrassi/PepperTeleoperation) application is running on the robot (or the socket server is running) and that both the robot and your computer are connected to the same network.
 
 ## Interface Overview
 
 1. Set Robot IP Address
-	 *	Enter the IP address of the Pepper robot you want to control.
+     *	Enter the IP address of the robot you want to control.
    * Make sure that the robot is connected to the same network.
 
-3. Movement Control
+2. Movement Control
     *	Control the robot’s movement using the direction buttons:
-	     - ⬅️ Rotate Left
-	     - ⬆️ Move Forward
-	     - ⏺️ Stop
-	     - ⬇️ Move Backward
-	     - ➡️ Rotate Right
+         - ⬅️ Rotate Left
+         - ⬆️ Move Forward
+         - ⏺️ Stop
+         - ⬇️ Move Backward
+         - ➡️ Rotate Right
 
-4. Volume Control
-	*	Adjust the robot’s volume using:
-	    *	🔊 Volume Up
-	    *	🔉 Volume Down
+3. Volume Control
+    *	Adjust the robot’s volume using:
+        *	🔊 Volume Up
+        *	🔉 Volume Down
 
-5. Make the Robot Talk
+4. Make the Robot Talk
     * Write a custom sentence or select a predefined sentence by entering its corresponding number.
     * Press Enter or click on the "Send" button to make the robot speak.
 
-6. Manage Predefined Sentences
+5. Manage Predefined Sentences
     * Add a Sentence: Enter a new sentence and press "Add" to include it in the list.
     * Modify a Sentence: Select a sentence by its number, modify it, and press "Save".
     * Delete a Sentence: Select a sentence by its number and press "Delete" to remove it.
