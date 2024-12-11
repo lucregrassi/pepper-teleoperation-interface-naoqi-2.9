@@ -1,4 +1,4 @@
-# Teleoperation Interface for robots
+# Teleoperation Interface for Robots
 
 This project provides a simple web-based interface for controlling a robot. It is built using [Streamlit](https://streamlit.io/) and enables users to send movement commands, adjust volume, and make the robot speak predefined or custom sentences. The application communicates with the robot over a UDP connection.
 
